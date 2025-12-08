@@ -1,0 +1,16 @@
+{
+  "name": "fullbackend",
+  "version": "1.0.0",
+  "description": "detailed backend project",
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "license": "ISC",
+  "author": "khush sonani",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
