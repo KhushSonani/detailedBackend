@@ -23,7 +23,7 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
     }
 
     req.user = user;
-    // next();
+    next();
   } catch (err) {
     throw new ApiError(401, error?.message || "Invalid access");
   }
