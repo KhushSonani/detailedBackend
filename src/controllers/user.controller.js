@@ -254,7 +254,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     throw new ApiError(400,"Fullname and email are required");
   }}
 
-  const user = User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set:{
@@ -280,7 +280,7 @@ const updateUserAvatar = asyncHandler(async (req,res) =>{
   if(!avatar.url){
     throw new ApiError(500,"Error while uploading avatar"); 
   }
-  const user =await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set:{
@@ -289,7 +289,8 @@ const updateUserAvatar = asyncHandler(async (req,res) =>{
     },
     {new : true}
   ).select("-password")
-  
+  //TODO : delete old avatar image
+
   return res.status(200)
   .json(new ApiResponse(200, user, "Avatar updated successfully"));
 
@@ -315,6 +316,7 @@ const updateUserCoverImage = asyncHandler(async (req,res) =>{
     {new : true}
   ).select("-password")
 
+  //TODO : delete old cover image
   return res
   .status(200)
   .json(new ApiResponse(200, user, "Cover image updated successfully"));
